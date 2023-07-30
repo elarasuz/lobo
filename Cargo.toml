@@ -1,0 +1,15 @@
+[package]
+name = "lobo"
+version = "0.0.1"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+homepage = "https://github.com/elarasuz/lobo"
+repository = "https://github.com/elarasuz/lobo"
+keywords = ["wolf", "s3", "mqtt", "archive", "serve" ]
+description = "wolf pack services"
+
+[dependencies]
+log = "0.4"
+env_logger = "0.10"
+config = "0.13"
+clap = { version = "4.3", features = ["derive"] }
