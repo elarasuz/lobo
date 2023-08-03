@@ -1,0 +1,4 @@
+debug = true
+
+[mqtt]
+host = "iot.my.cloud"

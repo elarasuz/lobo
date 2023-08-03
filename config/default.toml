@@ -1,0 +1,5 @@
+[mqtt]
+host = "iot.cloud"
+port = 1883
+topic = "topic"
+
