@@ -19,3 +19,6 @@ cargo publish
 cargo build --release
 ```
 
+## Todo
+
+- config files should be passed as param or to be from $HOME/.lobo.toml

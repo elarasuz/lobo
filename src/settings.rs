@@ -4,6 +4,13 @@ use std::env;
 
 #[derive(Debug, Deserialize)]
 #[allow(unused)]
+pub struct Logs {
+    pub path: String,
+    pub files: usize,
+}
+
+#[derive(Debug, Deserialize)]
+#[allow(unused)]
 pub struct MQTT {
     pub host: String,
     pub port: u16,
@@ -15,6 +22,7 @@ pub struct MQTT {
 pub struct Settings {
     pub debug: bool,
     pub mqtt: MQTT,
+    pub logs: Logs,
 }
 
 impl Settings {

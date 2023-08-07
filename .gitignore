@@ -14,3 +14,4 @@ Cargo.lock
 *.pdb
 
 config/local.toml
+logs/log*
