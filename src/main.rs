@@ -18,6 +18,8 @@ use std::process::exit;
 use std::str;
 use std::time::Duration;
 
+use crate::cli::Commands;
+
 async fn mqtt_stream_topic(cfg: &Settings) {
     let mut mqttoptions = MqttOptions::new("rumqtt-async", &cfg.mqtt.host, cfg.mqtt.port);
     mqttoptions.set_keep_alive(Duration::from_secs(5));
@@ -87,13 +89,9 @@ async fn main() {
     let cli = cli::Cli::parse();
     let settings = Settings::new(cli.config).unwrap();
     info!("{:?}", settings);
-    mqtt_stream_topic(&settings).await;
-
-    // // You can check for the existence of subcommands, and if found use their
-    // // matches just as you would the top level cmd
-    // match &cli.command {
-    //     Commands::Test { config: _ } => {
-    //         mqtt_stream_topic(&settings).await;
-    //     }
-    // }
+    match &cli.command {
+        Commands::Mqtt => {
+            mqtt_stream_topic(&settings).await;
+        }
+    }
 }

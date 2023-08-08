@@ -9,12 +9,12 @@ pub struct Cli {
     #[arg(short, long, value_name="config file", default_value="")]
     pub config: String,
 
-    // #[command(subcommand)]
-    // pub command: Commands,
+    #[command(subcommand)]
+    pub command: Commands,
 }
 
 #[derive(Subcommand)]
 pub enum Commands {
-    /// handlebar templates
-    Test { config: String },
+    /// mqtt client service
+    Mqtt,
 }
