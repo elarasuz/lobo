@@ -1,3 +1,5 @@
+debug = false
+
 [mqtt]
 host = "iot.cloud"
 port = 1883
