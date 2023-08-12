@@ -19,3 +19,11 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 file-rotate = "0.7.5"
 chrono = "0.4.26"
+# archive to s3 compatible 
+opendal = "0.39"
+
+[profile.release]
+opt-level = 'z' # optimize for size
+lto = true
+codegen-units = 1
+strip = "debuginfo"

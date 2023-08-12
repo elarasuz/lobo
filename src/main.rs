@@ -46,6 +46,7 @@ async fn mqtt_stream_topic(cfg: &Settings) {
         .subscribe(&cfg.mqtt.topic, QoS::AtMostOnce)
         .await
         .unwrap();
+    // println!("Path {}", (&log.log_paths()[0]));
 
     loop {
         let res = eventloop.poll().await;
