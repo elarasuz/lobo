@@ -1,5 +1,5 @@
-mod cli;
-mod settings;
+use lobo::config::Settings;
+use lobo::commands::{Commands, Cli};
 
 #[macro_use]
 extern crate log;
@@ -8,7 +8,6 @@ use chrono::prelude::*;
 use clap::Parser;
 use file_rotate::suffix::{DateFrom, FileLimit};
 use rumqttc::{AsyncClient, ConnectionError, Incoming, MqttOptions, QoS};
-use settings::Settings;
 // use config::Config;
 use file_rotate::{
     compression::Compression, suffix::AppendTimestamp, ContentLimit, FileRotate, TimeFrequency,
@@ -18,7 +17,6 @@ use std::process::exit;
 use std::str;
 use std::time::Duration;
 
-use crate::cli::Commands;
 
 async fn mqtt_stream_topic(cfg: &Settings) {
     let mut mqttoptions = MqttOptions::new("rumqtt-async", &cfg.mqtt.host, cfg.mqtt.port);
@@ -87,7 +85,7 @@ async fn mqtt_stream_topic(cfg: &Settings) {
 async fn main() {
     // RUST_LOG=debug
     env_logger::init();
-    let cli = cli::Cli::parse();
+    let cli = Cli::parse();
     let settings = Settings::new(cli.config).unwrap();
     info!("{:?}", settings);
     match &cli.command {
